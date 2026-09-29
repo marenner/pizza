@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: darkred;
     margin: 0;
@@ -18,4 +22,25 @@ body {
 #header img {
     max-width: 242px;
     float: right;
+}
+#header h1 {
+    font-size: 3.5rem;
+    color: darkgreen;
+}
+#contact-button {
+    border: none;
+    background-color: darkgreen;
+    border-color: darkgreen;
+    border-radius: .25rem;
+    padding: .5rem .75rem;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+input[type="text"], input[type="email"] {
+    width: 100%;
+    border: 1px solid darkgreen;
+    border-radius: .25em;
+    margin: 0rem 0rem 1rem 0rem;
+    padding: .75rem;
 }

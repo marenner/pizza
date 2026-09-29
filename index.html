@@ -13,8 +13,37 @@
         <div id="header">
             <img src="images/pizza-delivery-man-small.png" alt="A man holding several boxes of pizza">
             <h1>Welcome to Pete's</h1>
-            <h2>We're glad you're here</h2>
+            <h2>Serving GRC students for 50 years</h2>
+            <hr>
+            <p>
+                BUY BUY BUY GIVE US MONEY
+            </p>
+            <a id="contact-button" href="#" role="button">Contact Us</a>
         </div>
+        <form id="pizza-form" action="#" method="get">
+            <fieldset> <!-- Contact Info -->
+                <legend>Contact Info</legend>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname">
+                <br>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname">
+                <br>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email">
+            </fieldset>
+            <br>
+            <fieldset> <!-- Pickup or Delivery -->
+                <legend>Select Pickup or Delivery</legend>
+                <input type="radio" id="pickup" name="method" value="pickup">
+                <label for="pickup">Pickup</label>
+                <br>
+                <input type="radio" id="delivery" name="method" value="delivery">
+                <label for="delivery">Delivery</label>
+            </fieldset>
+            <br>
+            <button type="submit" id="order-button">Place Order</button>
+        </form>
     </div>
 </body>
 </html>
