@@ -37,7 +37,7 @@ body {
     color: white;
     font-size: 1rem;
 }
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], select {
     width: 100%;
     border: 1px solid darkgreen;
     border-radius: .25em;
