@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pete's 'Za</title>
-        <!--Favicon-->
-        <link rel="icon" href="images/pizza-icon.png">  
-        <link rel="Stylesheet" href="styles/pizza-styles.css">
+        <link rel="icon" href="images/pizza-icon.png">          <!--Favicon-->
+        <link rel="Stylesheet" href="styles/pizza-styles.css">  <!--CSS-->
+        <script src="scripts/pizza.js" defer></script>                <!--Javascript-->
     </head>
     <body>
         <div id="main">
@@ -25,12 +25,15 @@
                     <legend>Contact Info</legend>
                     <label for="fname">First Name</label>
                     <input type="text" id="fname" name="fname">
+                    <span class="error" id="err-fname">Please enter a valid first name.</span>
                     <br>
                     <label for="lname">Last Name</label>
                     <input type="text" id="lname" name="lname">
+                    <span class="error" id="err-lname">Please enter a valid last name.</span>
                     <br>
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email">
+                    <span class="error" id="err-email">Please enter a valid email address.</span>
                 </fieldset>
                 <fieldset> <!-- Pickup or Delivery -->
                     <legend>Select Pickup or Delivery</legend>
@@ -39,6 +42,7 @@
                     <br>
                     <input type="radio" id="delivery" name="method" value="delivery">
                     <label for="delivery">Delivery</label>
+                    <span class="error" id="err-loc">Please select pickup or delivery.</span>
                 </fieldset>
                 <fieldset> <!-- Toppings -->
                     <legend>Select Toppings</legend>
@@ -68,6 +72,7 @@
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
                     </select>
+                    <span class="error" id="err-size">Please select a size.</span>
                 </fieldset>
                 <label for="comment">Comments</label>  <!-- Comments -->
                 <textarea rows="5" id="comment" name="comment"></textarea>

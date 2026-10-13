@@ -62,3 +62,10 @@ label {
 textarea {
     resize: none;
 }
+.error {
+    color: red;
+    font-size: 10pt;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    display: none;
+}
