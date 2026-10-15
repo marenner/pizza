@@ -25,7 +25,7 @@ document.getElementById("pizza-form").onsubmit = () => {
         if (methodButtons[i].checked)                                   // if an option is selected
             methodSelected = true;                                      // confirm validity
     }
-    if (!methodSelected) {                                              
+    if (!methodSelected) {                                              // check if validity confirmed
         document.getElementById("err-method").style.display = "block";  // if fail: display error message
         isValid = false;                                                // mark entire form as invalid until next submit
     }
@@ -39,8 +39,8 @@ document.getElementById("pizza-form").onsubmit = () => {
 };
 
 function clearErrorMessages() {
-    let errors = document.getElementsByClassName("error");
-    for (let i = 0; i < errors.length; i++) {
-        errors[i].style.display = "none";
+    let errors = document.getElementsByClassName("error");  // select all error messages
+    for (let i = 0; i < errors.length; i++) {               // for each message
+        errors[i].style.display = "none";                   // set as invisible
     }
 }
