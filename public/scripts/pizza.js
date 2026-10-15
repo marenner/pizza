@@ -1,13 +1,13 @@
 document.getElementById("pizza-form").onsubmit = () => {
 
+    // reset error messages and validation
     clearErrorMessages();
-
     var isValid = true;
 
     let fname = document.getElementById("fname").value.trim();
-    if (fname === "") {
-        document.getElementById("err-fname").style.display = "block";
-        isValid = false;
+    if (fname === "") {                                                 // fname validation
+        document.getElementById("err-fname").style.display = "block";   // display error message
+        isValid = false;                                                // mark entire form as invalid until next submit
     }
     let lname = document.getElementById("lname").value.trim();
     if (lname === "") {
