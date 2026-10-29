@@ -17,23 +17,25 @@ app.use(express.static('public'));
 // Access form data through req.body
 app.use(express.urlencoded({extended: true}));
 
+app.set('view engine', 'ejs');
+
 // Define a default route ("/")
 app.get('/', (req, res) => {
     // res.send('Welcome to Pete\'s \'Za');
-    res.sendFile(`${import.meta.dirname}/views/home.html`);
+    res.render('home');
 });
 
 // Add a contact route to display a contact view page
 app.get('/contact-us', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/contact.html`);
+    res.render('contact');
 });
 
-app.get('/confirm', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/confirm.html`);
-});
+// app.get('/confirm', (req, res) => {
+//     res.render('confirm');
+// });
 
 app.get('/menu', (req, res) => {
-    res.sendFile(`${import.meta.dirname}/views/menu.html`);
+    res.render('menu');
 });
 
 app.post('/submit-order', (req, res) => {
@@ -48,12 +50,12 @@ app.post('/submit-order', (req, res) => {
     console.log(orders);
 
     // Display confirmation page
-    res.sendFile(`${import.meta.dirname}/views/confirm.html`);
+    res.render('confirm', {order});
 });
 
 // Add an admin route
 app.get('/admin', (req, res) => {
-    res.send(orders);
+    res.render('admin', {orders});
 });
 
 // Start the server on the designated port

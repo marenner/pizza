@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order Confirmed</title>
+        <link rel="icon" href="images/pizza-icon.png">          <!--Favicon-->
+        <link rel="Stylesheet" href="styles/pizza-styles.css">  <!--CSS-->
+    </head>
+    <body>
+        <div id="main">
+            <h1>Thank you for your order, <%= order.fname %>!</h1>
+            <h2>Order Summary</h2>
+            <p>
+                Name: <%= order.fname %> <%= order.lname %>
+            </p>
+            <p>
+                Email: <%= order.email %>
+            </p>
+            <p>
+                Pickup or Delivery: <%= order.method %>
+            </p>
+            <p>
+                Toppings: <%= order.toppings %>
+            </p>
+            <p>
+                Size: <%= order.size %>
+            </p>
+            <p>
+                Comments: <%= order.comment %>
+            </p>
+            <p>
+                Date and Time: <%= order.timestamp.toLocaleString() %>
+            </p>
+            <a href="/">Place an Order</a>
+        </div>
+    </body>
+</html>
