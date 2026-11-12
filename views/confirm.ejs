@@ -12,6 +12,9 @@
             <h1>Thank you for your order, <%= order.fname %>!</h1>
             <h2>Order Summary</h2>
             <p>
+                ID: <%= order.id %>
+            </p>
+            <p>
                 Name: <%= order.fname %> <%= order.lname %>
             </p>
             <p>
@@ -30,7 +33,7 @@
                 Comments: <%= order.comment %>
             </p>
             <p>
-                Date and Time: <%= order.timestamp.toLocaleString() %>
+                Date and Time: <%= order.timestamp %>
             </p>
             <a href="/">Place an Order</a>
         </div>
