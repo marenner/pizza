@@ -8,6 +8,8 @@ import mysql2 from 'mysql2';
 import dotenv from 'dotenv';
 dotenv.config();
 
+import session from 'express-session';
+
 // Create a connection pool
 const pool = mysql2.createPool({
     host: process.env.DB_HOST,
@@ -35,6 +37,21 @@ app.use(express.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs');
 
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 }
+}));
+
+function requireLogin(req, res, next) {
+    if (req.session.loggedIn) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
 // Create a testing route
 app.get('/db-test', async(req, res) => {
     try {
@@ -56,10 +73,6 @@ app.get('/', (req, res) => {
 app.get('/contact-us', (req, res) => {
     res.render('contact');
 });
-
-// app.get('/confirm', (req, res) => {
-//     res.render('confirm');
-// });
 
 app.get('/menu', (req, res) => {
     res.render('menu');
@@ -101,8 +114,35 @@ app.post('/submit-order', async(req, res) => {
     res.render('confirm', {order});
 });
 
+// Add a route for the login page
+app.get('/login', (req, res) => {
+    res.render('login', { error: null });
+})
+
+app.post('/login', (req, res) => {
+    
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if (username === process.env.ADMIN_USER &&
+        password === process.env.ADMIN_PASSWORD) {
+
+            req.session.loggedIn = true;
+
+            res.redirect('/admin');
+    } else {
+        res.render('login', { error: 'Invalid username or password'});
+    }
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/login');
+    });
+});
+
 // Add an admin route
-app.get('/admin', async(req, res) => {
+app.get('/admin', requireLogin, async(req, res) => {
     try {
         const [orders] = await pool.query('SELECT * FROM orders ORDER BY timestamp DESC');
         res.render('admin', {orders});
